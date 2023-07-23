@@ -1,0 +1,37 @@
+<h3>Add new Product </h3>
+<!-- title: String,
+    author: String,
+    genre: String,
+    isFiction: Boolean,
+    numberOfPages: Number -->
+<form method="POST" action="/product/add">
+    <div>
+        <label>Type</label>
+        <input type="text" name="title">
+    </div>
+
+    <div>
+        <label>Roaster</label>
+        <select name="roaster" multiple="multiple">
+            <% roasters.forEach(function(roaster){%>
+                <option value="<%= roaster._id %>"><%= roaster.name %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <!-- <div>
+        <label>Genre</label>
+        <input type="text" name="genre">
+    </div>
+
+    <div>
+        <label>Is Fiction?</label>
+        <input type="text" name="isFiction">
+    </div>
+
+    <div>
+        <label>Pages</label>
+        <input type="text" name="numberOfPages">
+    </div>
+    <input type="submit">
+</form> -->

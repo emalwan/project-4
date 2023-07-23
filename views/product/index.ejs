@@ -1,0 +1,32 @@
+<h3>Product Index</h3>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Roaster</th>
+    </tr>
+    <% products.forEach(function(product){ %>
+        <!-- /product/detail?id=647898f51c2b7407d29f6c32 -->
+        <tr>
+            <td>
+                <a href="/product/detail?id=<%= product._id %>">
+                    <%= product.title %>
+                </a>
+                
+            </td>
+            
+            <td>
+                <% product.roaster.forEach(function(obj, i){%>
+                    <%= i + 1 %>:<%= obj.name %>
+                <% }) %>
+            </td>
+    
+                <form method="POST" action="/product/delete?id=<%=product._id%>">
+                    <button type="submit">DELETE</button>
+                </form>
+                <a href="/product/edit?id=<%=product._id%>">UPDATE</a>
+
+            </td>
+        </tr>
+    <% }) %>
+</table>

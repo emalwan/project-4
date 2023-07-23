@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>west-cost coffee</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <h1>THIS IS A SHARED LAYOUT</h1>
+    <nav>
+        <a href="/product/add">Add New Product</a>
+        <a href="/roaster/add">Add New Roaster</a>
+        <a href="/product/index">View Your products</a>
+        
+        
+        <% if (currentUser) {%>
+            <a href="/auth/logout">Log Out</a>
+            <br>
+            <%= currentUser.firstName %>
+        <% } else {%>
+            <a href="/auth/signup">Sign Up</a>
+            <a href="/auth/signin">Sign In</a>
+        <% } %>
+    </nav>
+    <%- body %>
+
+    <% if (currentUser) {%>
+        <%= currentUser.firstName %>
+    <% }%>
+    <h3>Shared Footer</h3>
+</body>
+</html>

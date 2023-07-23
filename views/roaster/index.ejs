@@ -1,0 +1,14 @@
+<h2>All our Authors</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <% authors.forEach(function(author){ %>
+        <tr>
+            <td><%= author.name %></td>
+            <td><%= author.email %></td>
+        </tr>
+    <% }) %>
+</table>

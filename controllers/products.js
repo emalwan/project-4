@@ -4,11 +4,10 @@ const Roaster = require('../models/Roaster')
 exports.product_create_get = async (req, res) => {
     try {
         const roasters = await Roaster.find()
-        res.render('product/add', {roasters})
+        res.json(roasters)
     } catch (error) {
         console.log(error.message)
     }
-
     
 }
 
@@ -93,3 +92,36 @@ exports.product_edit_post = async (req, res) => {
         console.log(error.message)
     }
 }
+
+
+exports.product_review_post = async (req, res) => {
+    try {
+      const product = await Product.findById(req.params.productId);
+      if (!product) {
+        throw new Error('No product found');
+      }
+    
+      product.reviews.push({
+        user: req.user.id,   
+        feedback: req.body.feedback,
+        rating: req.body.rating
+      });
+      await product.save();
+      res.status(200).send(product);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  };
+  
+  exports.product_reviews_get = async (req, res) => {
+    try {
+      const product = await Product.findById(req.params.productId).populate('reviews.user');
+      if (!product) {
+        throw new Error('No product found');
+      }
+      res.status(200).send(product.reviews);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  };
+  

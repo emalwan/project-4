@@ -19,7 +19,7 @@ exports.roaster_create_post = async (req, res) => {
 exports.roaster_index_get = async (req, res) => {
     try {
         const roasters = await Roaster.find()
-        res.render('roaster/index', {roasters})
+        res.json(roasters)
     } catch (error){
         console.log(error.message)
     }

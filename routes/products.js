@@ -12,5 +12,8 @@ router.get('/product/detail', productController.product_detail_get)
 // router.get('/product/edit', isLoggedIn, productController.product_edit_get)
 router.get('/product/edit', productController.product_edit_get)
 router.post('/product/edit', productController.product_edit_post)
+router.post('/product/:productId/review', isLoggedIn, productController.product_review_post);
+router.get('/product/:productId/reviews', productController.product_reviews_get);
+
 
 module.exports = router

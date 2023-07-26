@@ -6,18 +6,22 @@ const bodyParser = require('body-parser')
 
 const passport = require('./lib/passportConfig')
 
+const Cart = require('./models/Cart');
+
 // Import our Routes
 const indexRoute = require('./routes/index')
 const productRoute = require('./routes/products')
 const roasterRoute = require('./routes/roasters')
 const authRoute = require('./routes/auth')
+const cartRoutes = require('./routes/cart')
+
 
 //Initialise our app
 const app = express()
 
 const PORT = 4000
 
-
+app.use('/cart', cartRoutes)
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
 

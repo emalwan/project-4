@@ -44,6 +44,7 @@ userSchema.statics.createSuperuser = async function(superuserData) {
   }
 };
 
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
